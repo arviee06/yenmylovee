@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can I Court You?</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background: #ffe6f0;
+  }
+  h1 {
+    font-size: 2em;
+    color: #ff4d6d;
+  }
+  .btn {
+    padding: 15px 25px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  #yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+  }
+  #noBtn {
+    background-color: #444;
+    color: white;
+  }
+  #floatingNo {
+    position: absolute;
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+  }
+  #loveLetter {
+    display: none;
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    font-size: 1.1em;
+    white-space: pre-line;
+  }
+</style>
+</head>
+<body>
+  <h1>Can I court you?</h1>
+  <button id="yesBtn" class="btn">Yes</button>
+  <button id="noBtn" class="btn">No</button>
+  <div id="floatingNo">No</div>
+  <div id="loveLetter">
+    Alam kong marami akong pagkukulang sayo yen at sana bigyan mo ako ng chance para makabawi sayo.
+    Gusto kong ipakita sayo na mahal na mahal kita higit pa sa inaakala mo.
+    Hayaan mo akong ibigay at iparamdam sayo ulit ang pagmamahal na walang katumbas.
+    Pinapangako ko sayo na hinding hindi na to mangyayari pa ulit at hindi na rin ako mawawala sa piling mo.
+    Gusto ko ring malaman mo na ikaw ang babaeng ang pang habang buhay ko at ikaw ang babaeng gusto kong pakasalan.
+    Mahal na mahal kita yen, iloveyouusomuchh :))
+  </div>
+
+<script>
+  let yesBtn = document.getElementById("yesBtn");
+  let noBtn = document.getElementById("noBtn");
+  let floatingNo = document.getElementById("floatingNo");
+  let loveLetter = document.getElementById("loveLetter");
+  let yesSize = 1;
+  let floatingNoClicked = false;
+
+  noBtn.addEventListener("click", function() {
+    yesSize += 0.3;
+    yesBtn.style.transform = `scale(${yesSize})`;
+    noBtn.style.display = "none";
+    showFloatingNo();
+  });
+
+  function showFloatingNo() {
+    floatingNo.style.display = "block";
+    moveFloatingNo();
+  }
+
+  function moveFloatingNo() {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    floatingNo.style.left = x + "px";
+    floatingNo.style.top = y + "px";
+  }
+
+  floatingNo.addEventListener("click", function() {
+    if (!floatingNoClicked) {
+      moveFloatingNo();
+      floatingNoClicked = true;
+    } else {
+      floatingNo.style.pointerEvents = "none";
+    }
+  });
+
+  yesBtn.addEventListener("click", function() {
+    loveLetter.style.display = "block";
+  });
+</script>
+</body>
+</html>
+
+
